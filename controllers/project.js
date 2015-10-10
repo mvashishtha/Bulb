@@ -1,10 +1,13 @@
+
 exports.getMakeProject = function(req, res) {
   res.render('project/makeProject', {
     title: 'Create Project'
+
   });
 };
 
 /**
+<<<<<<< HEAD
  * POST /signup
  * Create a new local account.
  */
@@ -22,6 +25,7 @@ exports.postMakeProject = function(req, res, next) {
     term: req.body.term,
     make_public: req.body.make_public
 })
+
 
 
 };
