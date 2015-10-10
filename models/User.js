@@ -25,9 +25,8 @@ var userSchema = new mongoose.Schema({
             tags: {type: Array, default: []},            
             name: { type: String, default: '' },
             bio: {type: String, default: ''},
-            skills: {type: String, default: ''},
-            quals: {type: String, default: ''},            
-            location: { type: String, default: '' },
+            skillsQuals: {type: String, default: ''},
+            interests: {type: String, default: ''},
             picture: { type: String, default: '' },
             availability: {type: String, default: ''},
             date_joined: {type: String, default: (new Date())}

@@ -7,30 +7,52 @@ block content
   form.form-horizontal(action='/account/profile', method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
-      label.col-sm-3.control-label(for='email') Email
-      .col-sm-7
-        input.form-control(type='email', name='email', id='email', value='#{user.email}')
-    .form-group
       label.col-sm-3.control-label(for='name') Name
       .col-sm-7
         input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
     .form-group
-      label.col-sm-3.control-label(for='location') Location
+      label.col-sm-3.control-label(for='email') Email
       .col-sm-7
-        input.form-control(type='text', name='location', id='location', value='#{user.profile.location}')
+        input.form-control(type='email', name='email', id='email', value='#{user.email}')
     .form-group
-      label.col-sm-3.control-label(for='website') Website
+      label.col-sm-3.control-label(for='bio') Say something about yourself
       .col-sm-7
-        input.form-control(type='text', name='website', id='website', value='#{user.profile.website}')
+        textarea.form-control(type='text', name='bio', id='bio', value='#{user.profile.bio}', rows ='3')
     .form-group
-      label.col-sm-3.control-label(for='gravatar') Gravatar
+      label.col-sm-3.control-label(for='interests') Interests
+      .col-sm-7
+        textarea.form-control(type='text', name='interests', id='interests', value='#{user.profile.interests}',row = '4')
+    .form-group
+      label.col-sm-3.control-label(for='skills') Skills and Qualifications
+      .col-sm-7
+        textarea.form-control(type='text', name='skillsQuals', id='skillsQuals', value='#{user.profile.skillsQuals}',row = '5')
+    .form-group
+      label.col-sm-3.control-label(for='availability') Availability during the week or weekend
+      .col-sm-7
+        textarea.form-control(type='text', name='availability', id='availability', value='#{user.profile.availability}',row = '3')
+
+    .form-group
+      label.col-sm-3.control-label(for='picture') Profile Picture
       .col-sm-4
-        img(src="#{user.gravatar()}", class='profile', width='100', height='100')
+        img(src="#{user.picture}", class='profile', width='100', height='100')
+    .form-group
+      label.col-sm-3.control-label(for='make_public') Make your profile public?
+      .col-sm-1
+        input.form-control(type='checkbox',  name='make_public', id='make_public', value='#{user.profile.make_public}')
+    
+
+
+
     .form-group
       .col-sm-offset-3.col-sm-4     
         button.btn.btn.btn-primary(type='submit')
           i.fa.fa-pencilr
           | Update Profile
+
+  .page-header
+    h3 Manage your projects
+    
+  
 
   .page-header
     h3 Change Password
