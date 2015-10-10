@@ -5,6 +5,13 @@ var mongoose = require('mongoose');
 var userSchema = new mongoose.Schema({
   email: { type: String, unique: true, lowercase: true },
   password: String,
+  make_public: {type: Boolean, default: false},
+  proj_lead: {type: Array, default: []},
+  proj_in: {type: Array, default: []},
+  proj_star: {type: Array, default: []},
+  
+  
+  
 
   facebook: String,
   twitter: String,
@@ -15,11 +22,15 @@ var userSchema = new mongoose.Schema({
   tokens: Array,
 
   profile: {
-    name: { type: String, default: '' },
-    gender: { type: String, default: '' },
-    location: { type: String, default: '' },
-    website: { type: String, default: '' },
-    picture: { type: String, default: '' }
+            tags: {type: Array, default: []},            
+            name: { type: String, default: '' },
+            bio: {type: String, default: ''},
+            skills: {type: String, default: ''},
+            quals: {type: String, default: ''},            
+            location: { type: String, default: '' },
+            picture: { type: String, default: '' },
+            availability: {type: String, default: ''},
+            date_joined: {type: String, default: (new Date()).getDate()}            
   },
 
   resetPasswordToken: String,

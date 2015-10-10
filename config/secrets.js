@@ -21,7 +21,7 @@
 
 module.exports = {
 
-  db: process.env.MONGODB || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test',
+    db: process.env.MONGODB || process.env.MONGOLAB_URI ||'mongodb://vashishtha.mahesh:pass2015calhacks@ds027479.mongolab.com:27479/bulb',
 
   sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
 
