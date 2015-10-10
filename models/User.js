@@ -30,7 +30,7 @@ var userSchema = new mongoose.Schema({
             location: { type: String, default: '' },
             picture: { type: String, default: '' },
             availability: {type: String, default: ''},
-            date_joined: {type: String, default: (new Date()).getDate()}            
+            date_joined: {type: String, default: (new Date())}
   },
 
   resetPasswordToken: String,
