@@ -359,3 +359,10 @@ exports.postForgot = function(req, res, next) {
     res.redirect('/forgot');
   });
 };
+
+exports.getPeopleListings = function(req, res) {
+    User.find(function(err, docs) {
+            res.render('project/peopleListings', { users: docs});
+        });
+
+};

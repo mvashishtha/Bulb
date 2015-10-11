@@ -125,7 +125,9 @@ app.get('/post', projectController.getMakeProject);
 app.post('/post', projectController.postMakeProject);
 
 
+
 app.get('/projpostings', projectController.getProjListings);
+app.get('/peoplepostings', userController.getPeopleListings);
 
 
 /**
