@@ -52,6 +52,7 @@ mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
   process.exit(1);
 });
+
 /**
  * Express configuration.
  */
@@ -125,9 +126,13 @@ app.post('/post', projectController.postMakeProject);
 
 
 
-
 app.get('/projpostings', projectController.getProjListings);
+
 app.post('/projpostings', projectController.postProjListings, projectController.getAddSelfToProject);
+
+app.get('/peoplepostings', userController.getPeopleListings);
+
+
 
 /**
  * API examples routes.

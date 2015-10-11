@@ -2,6 +2,7 @@ var Project = require('../models/Project');
 var User = require('../models/User');
 var secrets = require('../config/secrets');
 
+
 exports.getMakeProject = function(req, res) {
   res.render('project/makeProject', {
     title: 'Create Project'
@@ -48,10 +49,12 @@ exports.postMakeProject = function(req, res, next) {
 };
 
 
+
 exports.getProjListings = function(req, res) {
     Project.find(function(err, docs) {
             res.render('project/projListings', { projects: docs});
         });
+
 };
 
 exports.postProjListings = function(req, res, next) {
@@ -68,6 +71,7 @@ exports.postProjListings = function(req, res, next) {
                 return res.redirect('/projpostings');
             }
         });     
+
 };
 
 exports.getAddSelfToProject = function(req, res) {
@@ -78,4 +82,4 @@ exports.getAddSelfToProject = function(req, res) {
     else {
         req.project.user_mem_list.push(req.user.id);
     }
-}
+};
