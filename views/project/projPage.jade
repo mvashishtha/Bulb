@@ -12,3 +12,12 @@ block content
     li= 'Description: ' + in_project.user_project_description
     li= 'Started by: ' + in_project.user_leader
     li= 'Members involved: ' + in_names    
+
+
+  form.form-horizontal(id='signup-form', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+        
+    .form-group
+      label.col-sm-3.control-label(for='join') Join this project?
+      .col-sm-7
+        input.form-control(type='checkbox', name='join', id='join', placeholder='join')      
