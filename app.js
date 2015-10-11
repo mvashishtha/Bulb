@@ -47,11 +47,11 @@ var app = express();
  * Connect to MongoDB.
  */
 
+mongoose.connect(secrets.db);
 mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
   process.exit(1);
 });
-mongoose.connect(secrets.db);
 /**
  * Express configuration.
  */
@@ -159,6 +159,8 @@ app.get('/api/bitgo', apiController.getBitGo);
 app.post('/api/bitgo', apiController.postBitGo);
 app.get('/api/bitcore', apiController.getBitcore);
 app.post('/api/bitcore', apiController.postBitcore);
+
+
 
 /**
  * OAuth authentication routes. (Sign in)
