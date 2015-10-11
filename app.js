@@ -46,12 +46,12 @@ var app = express();
 /**
  * Connect to MongoDB.
  */
-
+mongoose.connect(secrets.db);
 mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
   process.exit(1);
 });
-mongoose.connect(secrets.db);
+
 /**
  * Express configuration.
  */

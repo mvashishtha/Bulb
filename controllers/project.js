@@ -1,7 +1,7 @@
 var Project = require('../models/Project');
 var secrets = require('../config/secrets');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://vashishtha.mahesh:pass2015calhacks@ds035240.mongolab.com:35240/bulb')
+//mongoose.connect('mongodb://vashishtha.mahesh:pass2015calhacks@ds035240.mongolab.com:35240/bulb')
 
 exports.getMakeProject = function(req, res) {
   res.render('project/makeProject', {
@@ -48,18 +48,23 @@ exports.getProjectsList = function(req, res) {
   });
   
 
-  //mongoose.connect(secrets.db);
- // var db = mongoose.connection;
- // db.on('error', console.error);
+  mongoose.connect(secrets.db);
+ var db = mongoose.connection;
+ db.on('error', console.error);
   
- // db.once('open',function(callback) {
- //   collections = db.db.users;
-//    collections.find({},{},function(e,docs){
-  //    res.render('projects/projectsList', {
-      //    "projectlist" : docs
-  //      });
-  //  });
-  //});
+ db.once('open',function(callback) {
+   // collections = db.db.users;
+   // collections.find({},{},function(e,docs){
+   //   res.render('projects/projectsList', {
+   //       "projectlist" : docs
+   //     });
+   // });
+
+    Project.find({}, function(err, docs){
+      console.log(docs);
+    })
+
+  });
 };
 
 exports.postProject = function(req, res) {
