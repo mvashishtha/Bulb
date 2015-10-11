@@ -52,6 +52,7 @@ mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
   process.exit(1);
 });
+
 /**
  * Express configuration.
  */
@@ -120,12 +121,15 @@ app.post('/account/password', passportConf.isAuthenticated, userController.postU
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
 
-app.get('/post', projectController.getMakeProject);
+app.get('/post', passportConf.isAuthenticated, projectController.getMakeProject);
 app.post('/post', projectController.postMakeProject);
 
 
+
 app.get('/projpostings', projectController.getProjListings);
-//app.post('/projpostings', projectController.postProjListings);
+app.post('/projpostings', projectController.postProjListings); //projectController.addSelfToProject);
+app.get('/peoplepostings', userController.getPeopleListings);
+
 
 /**
  * API examples routes.

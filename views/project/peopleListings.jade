@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 People
+
+  ul
+    for user in users
+      li= user.profile.name + '\n' + user.profile.interests 

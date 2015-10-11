@@ -1,0 +1,14 @@
+extends ../layout
+
+
+block content
+  .page-header
+    h3  in_project.title
+
+  ul    
+    li= 'Date Started: ' + in_project.date_started
+    li= 'Term: ' + in_project.term
+    li= 'Tags: ' + in_project.tags
+    li= 'Description: ' + in_project.user_project_description
+    li= 'Started by: ' + in_project.user_leader
+    li= 'Members involved: ' + in_names    

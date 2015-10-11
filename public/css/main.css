@@ -225,6 +225,7 @@ th {
   padding: 0;
 }
 
+
 #back { 
   top: 0;
   position: relative;
@@ -325,6 +326,7 @@ th {
   color: white;
   transition-duration: 0.5s; 
 }
+
 
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
