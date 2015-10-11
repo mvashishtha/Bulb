@@ -11,9 +11,9 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-body {
+/*body {
   margin: 0;
-}
+}*/
 
 article,
 aside,
@@ -56,6 +56,10 @@ a {
 a:active,
 a:hover {
   outline: 0;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 abbr[title] {
@@ -287,7 +291,6 @@ th {
   height: 15%;
   font-size: 350%;
 }
-
 
 
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
@@ -2008,8 +2011,6 @@ pre code {
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
 .container:before,
@@ -2043,8 +2044,8 @@ pre code {
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+/*  padding-left: 15px;
+  padding-right: 15px;*/
 }
 
 .container-fluid:before,
