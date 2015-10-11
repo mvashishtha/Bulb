@@ -25,7 +25,8 @@ exports.postMakeProject = function(req, res, next) {
     user_project_description: req.body.user_project_description,
     tags: req.body.tags,
     term: req.body.term,
-    make_public: req.body.make_public
+    make_public: req.body.make_public || false
+    
     
 });
   req.user.proj_lead.push(newProject);
