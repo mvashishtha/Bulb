@@ -11,9 +11,9 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-body {
+/*body {
   margin: 0;
-}
+}*/
 
 article,
 aside,
@@ -56,6 +56,10 @@ a {
 a:active,
 a:hover {
   outline: 0;
+}
+
+body {
+	overflow-x: hidden;
 }
 
 abbr[title] {
@@ -220,6 +224,74 @@ td,
 th {
   padding: 0;
 }
+
+#back { 
+	top: 0;
+	position: relative;
+	z-index: -1;
+}
+
+#background {
+	top: -20%;
+	left: -6%;
+	width: 120%;
+/*	margin-left: 0;
+	padding-left: 0;*/
+/*	max-width: 130%;*/
+	max-height: 130%;
+	position: relative;
+	z-index: -1;
+}
+
+
+#maintext {
+/*	background-color: green;*/
+	height: 70%;
+	width: 100%;
+	bottom: 5%;
+	position: absolute;
+	color: white;
+	text-align: center;
+	z-index: 1;
+}
+
+#logo {
+/*	background-color: blue;*/
+	height: 50%;
+	margin: 0 auto;
+	width: 35%;
+	position: relative;
+	display: block;
+
+}
+
+#bulb {
+/*	background-color: red;*/
+	display: block;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	padding: 25px;
+}
+
+#title {
+/*	background-color: orange;*/
+	height: 20%;
+	position: relative;
+	font-size: 500%;
+	display: block;
+	padding-top: 20px;
+}
+
+#subtitle {
+/*	background-color: black;*/
+	padding: 10px;
+	display: block;
+	position: relative;
+	height: 15%;
+	font-size: 350%;
+}
+
 
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
@@ -1939,8 +2011,6 @@ pre code {
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
 .container:before,
@@ -1974,8 +2044,8 @@ pre code {
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+/*  padding-left: 15px;
+  padding-right: 15px;*/
 }
 
 .container-fluid:before,
