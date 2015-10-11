@@ -1,4 +1,6 @@
 var Project = require('../models/Project');
+var secrets = require('../config/secrets');
+
 exports.getMakeProject = function(req, res) {
   res.render('project/makeProject', {
     title: 'Create Project'
@@ -26,17 +28,21 @@ exports.postMakeProject = function(req, res, next) {
     make_public: req.body.make_public
     
 });
+  req.user.proj_lead.push(newProject);
+  req.user.save(function(err){
+    if (err) return next(err);
+  });
   newProject.save(function(err) {
       if (err) return next(err);
       res.redirect('/');
     });
 
-
-
 };
+
 
 exports.getProjListings = function(req, res) {
     Project.find(function(err, docs) {
             res.render('project/projListings', { projects: docs});
         });
 };
+
