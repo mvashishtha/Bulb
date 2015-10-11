@@ -12,6 +12,7 @@ var projectSchema = new mongoose.Schema({
   date_started: {type: String, default: (new Date())},
   term: {type: String, default: ''},
   make_public: {type: Boolean, default: false}
+        title: {type: String, default: ''}
     });
 
 
