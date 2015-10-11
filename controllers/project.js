@@ -34,3 +34,9 @@ exports.postMakeProject = function(req, res, next) {
 
 
 };
+
+exports.getProjListings = function(req, res) {
+    Project.find(function(err, docs) {
+            res.render('project/projListings', { projects: docs});
+        });
+};
