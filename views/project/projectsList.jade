@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+	h1. 
+		Projects List
+	u1
+		each project, i in projectlist
+			li 
+				a(href="ocf.berkeley.edu/~msv")= project.user_project_description
