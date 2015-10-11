@@ -127,8 +127,11 @@ app.post('/post', projectController.postMakeProject);
 
 
 app.get('/projpostings', projectController.getProjListings);
-app.post('/projpostings', projectController.postProjListings); //projectController.addSelfToProject);
+
+app.post('/projpostings', projectController.postProjListings, projectController.getAddSelfToProject);
+
 app.get('/peoplepostings', userController.getPeopleListings);
+
 
 
 /**
