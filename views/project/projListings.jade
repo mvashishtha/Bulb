@@ -6,4 +6,6 @@ block content
 
   ul
     for project in projects
-      li= project.user_project_description
+      li
+        a(href="/")=project.user_project_description
+          

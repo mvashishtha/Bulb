@@ -125,7 +125,7 @@ app.post('/post', projectController.postMakeProject);
 
 
 app.get('/projpostings', projectController.getProjListings);
-
+app.post('/projpostings', projectController.postProjListings);
 
 /**
  * API examples routes.
