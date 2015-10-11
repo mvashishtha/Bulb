@@ -125,8 +125,8 @@ exports.postUpdateProfile = function(req, res, next) {
     user.profile.skillsQuals = req.body.skillsQuals || '';
     user.profile.interests = req.body.interests || '';
     user.profile.availability = req.body.availability || '';
-    user.profile.tags = req.body.tags || '';
-    user.make_public = req.body.make_public;
+//    user.profile.tags = req.body.tags || '';
+    user.make_public = req.make_public || false;
 
     user.save(function(err) {
       if (err) return next(err);
@@ -363,6 +363,13 @@ exports.postForgot = function(req, res, next) {
 exports.getPeopleListings = function(req, res) {
     User.find(function(err, docs) {
             res.render('project/peopleListings', { users: docs});
+        });
+
+};
+
+exports.getUserDesc = function(req, res) {
+    User.find(function(err, docs) {
+            res.render('project/users/'+, { users: docs});
         });
 
 };

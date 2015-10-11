@@ -129,6 +129,8 @@ app.post('/post', projectController.postMakeProject);
 app.get('/projpostings', projectController.getProjListings);
 app.get('/peoplepostings', userController.getPeopleListings);
 
+app.get('/projects/.*', projectController.getProjDesc);
+app.get('/users/.*', userController.getUserDesc);
 
 /**
  * API examples routes.
