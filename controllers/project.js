@@ -47,5 +47,3 @@ exports.getProjListings = function(req, res) {
         });
 };
 
-
-
