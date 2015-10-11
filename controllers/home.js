@@ -7,3 +7,10 @@ exports.index = function(req, res) {
     title: 'Home'
   });
 };
+
+exports.twenty = function(req, res) {
+  res.render('twenty', {
+    title: 'Landing Page'
+  });
+};
+

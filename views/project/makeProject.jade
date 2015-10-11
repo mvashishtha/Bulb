@@ -7,25 +7,31 @@ block content
     input(type='hidden', name='_csrf', value=_csrf)
 
     .form-group
+      label.col-sm-3.control-label(for='title') Project title
+      .col-sm-7
+        textarea.form-control(type='title', name='title', id='title', placeholder='Title')
+
+    .form-group
       label.col-sm-3.control-label(for='user_project_description') Project Description
       .col-sm-7
         textarea.form-control(type='user_project_description', name='user_project_description', id='user_project_description', placeholder='Project', rows = '5')
     .form-group
       label.col-sm-3.control-label(for='tags') Add tags to your project! 
       .col-sm-7
-        input.form-control(type='tags', name='tags', id='tags', placeholder='#Tags')
+        textarea.form-control(type='tags', name='tags', id='tags', placeholder='#Tags')
     .form-group
       label.col-sm-3.control-label(for='term') Is your project a short-term project (e.g. weekend project, hackathon) or a long-term one (e.g. startup, semester-long independent project etc) 
       .col-sm-7
-        input.form-control(type='term', name='term', id='term', placeholder='Timeline')
-
+        textarea.form-control(type='term', name='term', id='term', placeholder='Timeline')
+        
     .form-group
       label.col-sm-3.control-label(for='make_public') Do you want your project to be publicly accessible? 
       .col-sm-7
         input.form-control(type='checkbox', name='make_public', id='make_public', placeholder='make_public') 
 
+
     .form-group
       .col-sm-offset-3.col-sm-7
         button.btn.btn-success(type='submit')
           i.fa.fa-user-plus
-          | Signup
+          | Create Project

@@ -1,7 +1,6 @@
 var Project = require('../models/Project');
 var secrets = require('../config/secrets');
-var mongoose = require('mongoose');
-//mongoose.connect('mongodb://vashishtha.mahesh:pass2015calhacks@ds035240.mongolab.com:35240/bulb')
+
 
 exports.getMakeProject = function(req, res) {
   res.render('project/makeProject', {
@@ -27,7 +26,8 @@ exports.postMakeProject = function(req, res, next) {
     user_project_description: req.body.user_project_description,
     tags: req.body.tags,
     term: req.body.term,
-    make_public: req.body.make_public
+    make_public: req.body.make_public || false
+    
     
 });
   req.user.proj_lead.push(newProject);
@@ -41,33 +41,12 @@ exports.postMakeProject = function(req, res, next) {
 
 };
 
-exports.getProjectsList = function(req, res) {
-  res.render('project/makeProject', {
-    title: 'Create Project'
 
-  });
-  
 
-  mongoose.connect(secrets.db);
- var db = mongoose.connection;
- db.on('error', console.error);
-  
- db.once('open',function(callback) {
-   // collections = db.db.users;
-   // collections.find({},{},function(e,docs){
-   //   res.render('projects/projectsList', {
-   //       "projectlist" : docs
-   //     });
-   // });
+exports.getProjListings = function(req, res) {
+    Project.find(function(err, docs) {
+            res.render('project/projListings', { projects: docs});
+        });
 
-    Project.find({}, function(err, docs){
-      console.log(docs);
-    })
-
-  });
 };
 
-exports.postProject = function(req, res) {
-
-  return res.redirect('/');
-}

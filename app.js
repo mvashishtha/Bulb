@@ -46,6 +46,7 @@ var app = express();
 /**
  * Connect to MongoDB.
  */
+
 mongoose.connect(secrets.db);
 mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
@@ -101,6 +102,8 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
  * Primary app routes.
  */
 app.get('/', homeController.index);
+// app.get('/twenty', homeController.twenty);
+
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
@@ -121,7 +124,9 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 app.get('/post', projectController.getMakeProject);
 app.post('/post', projectController.postMakeProject);
 
-app.get('/projpostings', projectController.getProjectsList);
+
+app.get('/projpostings', projectController.getProjListings);
+
 
 /**
  * API examples routes.
@@ -157,6 +162,8 @@ app.get('/api/bitgo', apiController.getBitGo);
 app.post('/api/bitgo', apiController.postBitGo);
 app.get('/api/bitcore', apiController.getBitcore);
 app.post('/api/bitcore', apiController.postBitcore);
+
+
 
 /**
  * OAuth authentication routes. (Sign in)
