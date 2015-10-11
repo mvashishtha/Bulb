@@ -127,7 +127,7 @@ app.post('/post', projectController.postMakeProject);
 
 
 app.get('/projpostings', projectController.getProjListings);
-app.post('/projpostings', projectController.postProjListings);// projectController.getAddSelfToProject);
+app.post('/projpostings', projectController.postProjListings, projectController.getAddSelfToProject);
 
 /**
  * API examples routes.

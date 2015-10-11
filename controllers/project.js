@@ -54,7 +54,7 @@ exports.getProjListings = function(req, res) {
         });
 };
 
-exports.postProjListings = function(req, res) {
+exports.postProjListings = function(req, res, next) {
     
      var query = Project.where({title: req.body.chosen_project});
     query.findOne(function (err, kitten) {
@@ -62,19 +62,20 @@ exports.postProjListings = function(req, res) {
             if (kitten) {
                 var usr_names = kitten.user_mem_list;
                 res.project = kitten;
-                res.render('project/projPage', {in_project: kitten, in_names: usr_names});
+                return res.render('project/projPage', {in_project: kitten, in_names: usr_names});
             }
             else {
-                res.redirect('/projpostings');
+                return res.redirect('/projpostings');
             }
         });     
 };
 
-/*exports.getAddSelfToProject = function(req, res) {
+exports.getAddSelfToProject = function(req, res) {
+    console.log(req.project.user_mem_list);
     if (! req.body.join) {
         return res.redirect('/')
     }
     else {
-        req.project.user_mem_list += req.user
-        
-        };*/
+        req.project.user_mem_list.push(req.user.id);
+    }
+}
