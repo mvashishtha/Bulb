@@ -31,6 +31,7 @@ var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
 var projectController = require('./controllers/project');
 
+
 /**
  * API keys and Passport configuration.
  */
@@ -45,12 +46,12 @@ var app = express();
 /**
  * Connect to MongoDB.
  */
-mongoose.connect(secrets.db);
+
 mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
   process.exit(1);
 });
-
+mongoose.connect(secrets.db);
 /**
  * Express configuration.
  */
@@ -121,6 +122,8 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 
 app.get('/post', projectController.getMakeProject);
 app.post('/post', projectController.postMakeProject);
+
+app.get('/projpostings', projectController.getProjectsList);
 
 /**
  * API examples routes.
