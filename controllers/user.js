@@ -367,9 +367,3 @@ exports.getPeopleListings = function(req, res) {
 
 };
 
-exports.getUserDesc = function(req, res) {
-    User.find(function(err, docs) {
-            res.render('project/users/'+, { users: docs});
-        });
-
-};
