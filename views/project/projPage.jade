@@ -11,19 +11,9 @@ block content
     li= 'Tags: ' + in_project.tags
     li= 'Description: ' + in_project.user_project_description
     li= 'Started by: ' + in_project.user_leader
-    li= 'Members involved: ' + in_names    
+    li= 'Members involved: ' + in_project.user_mem_list 
 
-
-  form.form-horizontal(id='signup-form', method='POST')
-    input(type='hidden', name='_csrf', value=_csrf)
+    a(class = 'button', href='/join/' + in_project.id.toString() + '/' + uid.toString()) Join Project            
+    a(class = 'button', href='/projpostings') Back to Project Postings 
+    
         
-    .form-group
-      label.col-sm-3.control-label(for='join') Join this project?
-      .col-sm-7
-        input.form-control(type='checkbox', name='join', id='join', placeholder='join')      
-
-    .form-group
-      .col-sm-offset-3.col-sm-7
-        button.btn.btn-success(type='enter joining preference')
-          i.fa.fa-user-plus
-          | Want to join?

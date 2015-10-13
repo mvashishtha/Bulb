@@ -1,0 +1,16 @@
+extends ../layout
+
+
+block content
+  .page-header
+    h3  All Projects
+
+  ul
+    for project in projects
+      li
+        a(href='/projects/' + project.id.toString()) #{project.title}
+          |: #{project.user_project_description}
+
+          
+                       
+

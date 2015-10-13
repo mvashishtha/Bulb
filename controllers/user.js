@@ -96,7 +96,7 @@ exports.postSignup = function(req, res, next) {
       if (err) return next(err);
       req.logIn(user, function(err) {
         if (err) return next(err);
-        res.redirect('/');
+        res.redirect(req.session.returnTo || '/');
       });
     });
   });
@@ -366,4 +366,9 @@ exports.getPeopleListings = function(req, res) {
         });
 
 };
+
+exports.getProfile = function(req, res) {
+    var id = req.params.id;
+    res.render('account/newProf', {in_id : id});
+}
 

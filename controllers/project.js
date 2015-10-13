@@ -49,37 +49,72 @@ exports.postMakeProject = function(req, res, next) {
 };
 
 
-
-exports.getProjListings = function(req, res) {
+exports.getProjPostings = function(req, res) {
     Project.find(function(err, docs) {
-            res.render('project/projListings', { projects: docs});
+            res.render('project/projPostings', { projects: docs});
+        });    
+};
+
+
+function convert_users(usr_ids, callback) {
+    var usr_names = [];
+    for (var i = 0; i < usr_ids.length; i++) {
+        User.findById(usr_ids[i], function(err, puppy) {
+                usr_names.push(puppy.profile.name);                
+            });        
+    }
+}
+
+
+exports.getDisplayProject = function(req, res) {
+    var pid = req.params.pid;
+    //    var query = Project.where({id: pid});
+
+    Project.findById(pid, function (err, kitten) {
+            if (err) return res.redirect('/');            
+            if (req.user){                                                
+                res.render('project/projPage.jade', { in_project: kitten, uid: req.user.id});                                   
+            }
+            else res.redirect(req.session.returnTo || '/projpostings');
         });
-
 };
 
-exports.postProjListings = function(req, res, next) {
-    
-     var query = Project.where({title: req.body.chosen_project});
-    query.findOne(function (err, kitten) {
+/*exports.pushDisplayProject = function(req, res) {
+    res.render('project/projPage.jade', {in_names : req.usr_names, in_project: kitten, uid: req.user.id});                                   
+    }*/
+
+function contains(a, obj) {
+    for (var i = 0; i < a.length; i++) {
+        if (a[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
+exports.getJoinProject = function(req, res) {
+    /*    if (req.user) return res.redirect('/');
+    res.render('account/signup', {
+            title: 'Create Account'
+            });*/
+    var pid = req.params.pid;
+    var uid = req.params.uid;
+    Project.findById(pid, function(err, kitten){
             if (err) return res.redirect('/');
-            if (kitten) {
-                var usr_names = kitten.user_mem_list;
-                res.project = kitten;
-                return res.render('project/projPage', {in_project: kitten, in_names: usr_names});
+            if (! contains(kitten.user_mem_list, uid)) {
+                kitten.user_mem_list.push(uid);
+                kitten.save();
             }
-            else {
-                return res.redirect('/projpostings');
+        });
+    res.redirect(req.session.returnTo || '/projpostings');
+};
+    //    console.log('getjoinproject');
+    //    var pid = req.params.pid;
+    //    var uid = req.params.uid;
+    /*    Project.findById(pid, function(err, kitten) {
+            if (err) return res.redirect('/');
+            if (! contains(kitten.user_mem_list, uid)) {
+                console.log((kitten.user_mem_list + [uid]).toString());
+                //                kitten.update({user_mem_list: kitten.user_mem_list + [uid]});
             }
-        });     
-
-};
-
-exports.getAddSelfToProject = function(req, res) {
-    console.log(req.project.user_mem_list);
-    if (! req.body.join) {
-        return res.redirect('/')
-    }
-    else {
-        req.project.user_mem_list.push(req.user.id);
-    }
-};
+            });  */  

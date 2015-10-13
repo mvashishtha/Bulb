@@ -125,12 +125,17 @@ app.get('/post', passportConf.isAuthenticated, projectController.getMakeProject)
 app.post('/post', projectController.postMakeProject);
 
 
+app.get('/projpostings', projectController.getProjPostings);
+//app.post('/projpostings', projectController.postProjPostings);
 
-app.get('/projpostings', projectController.getProjListings);
+app.get('/projects/:pid?', projectController.getDisplayProject);
+app.get('/join/:pid?/:uid?', projectController.getJoinProject);
 
-app.post('/projpostings', projectController.postProjListings, projectController.getAddSelfToProject);
 
 app.get('/peoplepostings', userController.getPeopleListings);
+//app.get('/users/:id?', userController.getPersonProfile);
+
+
 
 
 
