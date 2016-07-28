@@ -58,11 +58,16 @@ exports.getProjPostings = function(req, res) {
 
 function convert_users(usr_ids, callback) {
     var usr_names = [];
-    for (var i = 0; i < usr_ids.length; i++) {
+    for (var i = 0; i < usr_ids.length; ) {
         User.findById(usr_ids[i], function(err, puppy) {
+                console.log(i);
                 usr_names.push(puppy.profile.name);                
+                console.log(puppy.profile.name);
+                if (i == usr_ids.length) {
+                    return callback(usr_names);
+                }
             });        
-    }
+    }    
 }
 
 
@@ -72,7 +77,8 @@ exports.getDisplayProject = function(req, res) {
 
     Project.findById(pid, function (err, kitten) {
             if (err) return res.redirect('/');            
-            if (req.user){                                                
+            if (req.user){          
+                User.find().populate
                 res.render('project/projPage.jade', { in_project: kitten, uid: req.user.id});                                   
             }
             else res.redirect(req.session.returnTo || '/projpostings');

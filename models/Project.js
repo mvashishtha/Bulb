@@ -6,6 +6,7 @@ var projectSchema = new mongoose.Schema({
 
   user_leader: {type: mongoose.Schema.Types.ObjectId, default: []},
   user_project_description: {type: String, default: ''},
+
   user_mem_list: {type: Array, default: []},//array of ObjectIds
   user_star_list: {type : Array, default: []},
   tags: {type : String, default: ''},
